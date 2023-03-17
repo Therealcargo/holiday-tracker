@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nearest Holiday</title>
+  </head>
+  <body>
+    <h1>Next Holiday:</h1>
+    <p id="holiday"></p>
+    
+    <script>
+      // Define an array of holidays
+      const holidays = [
+        {name: "New Year's Day", date: "January 1, 2024"},
+        {name: "Valentine's Day", date: "February 14, 2024"},
+        {name: "Easter", date: "April 21, 2024"},
+        {name: "Memorial Day", date: "May 27, 2024"},
+        {name: "Independence Day", date: "July 4, 2024"},
+        {name: "Labor Day", date: "September 2, 2024"},
+        {name: "Thanksgiving Day", date: "November 28, 2024"},
+        {name: "Christmas Day", date: "December 25, 2024"}
+      ];
+      
+      // Find the nearest holiday
+      let nearestHoliday = null;
+      let nearestDate = Infinity;
+      const today = new Date();
+      for (let i = 0; i < holidays.length; i++) {
+        const holidayDate = new Date(holidays[i].date);
+        if (holidayDate >= today && holidayDate < nearestDate) {
+          nearestHoliday = holidays[i];
+          nearestDate = holidayDate;
+        }
+      }
+      
+      // Display the nearest holiday in the HTML page
+      document.getElementById("holiday").innerHTML = nearestHoliday.name + " on " + nearestHoliday.date;
+    </script>
+  </body>
+</html>
